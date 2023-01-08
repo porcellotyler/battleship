@@ -1,4 +1,4 @@
-import { Ship } from "ship.js";
+import { Ship } from "./ship.js";
 
 const Gameboard = () => {
     const coordinates = [
@@ -58,7 +58,6 @@ const Gameboard = () => {
 }
 
 module.exports = Gameboard;
-
 
 //game board is 10x10 - spaces numbered 0 - 100? 
 //create game board in DOM in sep DOM module
