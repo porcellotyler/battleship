@@ -32,7 +32,7 @@ const computer = () => {
 
         //Assuming move is legal, add it to the oldMoves array, call Player().attack(move);
         oldMoves.push(move);
-        return attack(move);
+        return prototype().attack(move);
     };
 }
 
