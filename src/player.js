@@ -36,5 +36,5 @@ const computer = () => {
     };
 }
 
-
-module.exports = Player;
+//module.exports = Player;
+export { Player, computer };

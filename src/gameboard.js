@@ -1,6 +1,6 @@
 import { Ship } from "./ship.js";
 
-const Gameboard = () => {
+const Gameboard = (name) => {
     const coordinates = [
         1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
         11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
@@ -13,6 +13,8 @@ const Gameboard = () => {
         81, 82, 83, 84, 85, 86, 87, 88, 89, 90,
         91, 92, 93, 94, 95, 96, 97, 98, 99, 100,
     ];
+
+    const getName = () => name;
 
     let shipCoords = [];
     let hitCoords = [];
@@ -54,10 +56,10 @@ const Gameboard = () => {
         if (shipCoords.length == hitCoords.length) return "Game over!"
     };
 
-    return { placeShip };
+    return { getName, placeShip };
 }
 
-module.exports = Gameboard;
-
+//module.exports = Gameboard;
+export { Gameboard };
 //game board is 10x10 - spaces numbered 0 - 100? 
 //create game board in DOM in sep DOM module
