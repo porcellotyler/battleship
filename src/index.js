@@ -41,6 +41,11 @@ function gameLoop(name) {
     computerBoard.placeShip(49, 1);
     computerBoard.placeShip(50, 1);
     computerBoard.placeShip(77, 1);
+
+    //After ships are placed, allow user to attack
+    
+
+    //add turn counter?
 }
 
 //4 1s

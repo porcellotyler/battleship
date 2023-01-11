@@ -1,3 +1,5 @@
+//import { Gameboard } from "./gameboard";
+
 //const container = document.getElementById('container');
 const playerDiv = document.getElementById('playerDiv');
 const computerDiv = document.getElementById('computerDiv');
@@ -18,6 +20,9 @@ const displayBoard = (player) => {
         //Set each square's ID to i so they're numbered 1 - 100
         square.setAttribute("id", `${i}`);
         square.className = "board";
+        /*square.addEventListener('click', (event) => {
+            Gameboard.receiveAttack(i);
+        });*/
         boardContainer.appendChild(square);
     };
     parentDiv.appendChild(boardContainer);
@@ -32,7 +37,14 @@ function removeForm() {
 function displayName() { 
     playerDiv.innerText = `${nameInput.value}`;
     computerDiv.innerText = "Computer";
-}
+};
+
+function displayShips(locations) {
+    while (locations.length > 0) {
+        document.getElementById(`${locations[0]}`).classList.add('ship');
+        locations.shift();
+    };
+};
 
 //module.exports = displayBoard;
-export { displayBoard, removeForm, displayName };
+export { displayBoard, removeForm, displayName, displayShips };

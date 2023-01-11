@@ -1,4 +1,5 @@
 import { Ship } from "./ship.js";
+import { displayShips } from "./DOM"
 
 const Gameboard = (name) => {
     const coordinates = [
@@ -26,7 +27,9 @@ const Gameboard = (name) => {
             startPoint++;
             length--;
         };
-        return shipCoords;
+
+        //Render ships in UI
+        return displayShips(shipCoords);
     };
 
     //Determines whether or not a ship is hit at a location. If hit, it 'hits' the ship, or records location of missed shot
