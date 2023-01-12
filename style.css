@@ -20,8 +20,13 @@
     border: 2px solid lightcoral;
     height: 25px;
     width: 25px;
+    cursor: pointer;
 }
 
 .ship {
     background-color: olivedrab;
+}
+
+.hit {
+    background-color: grey;
 }
