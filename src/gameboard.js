@@ -34,8 +34,8 @@ class Gameboard {
         return displayShips(this.shipCoords, name);
     };
 
-    receiveAttack = (location) => {
-        let target = document.getElementById(`${location}`);
+    receiveAttack = (location, boardName) => {
+        let target = document.getElementsByClassName(`${boardName}`)[location];
 
         //Determines if a ship is hit
         if (target.classList.contains('ship')) {
@@ -90,7 +90,7 @@ class Gameboard {
         } else {
             //If ship is not hit, add to missedShots
             this.missedShots.push(location);
-            displayMiss(this.missedShots);
+            displayMiss(this.missedShots, boardName);
         };
         //After attack received, check for game over
         return this.findShips();

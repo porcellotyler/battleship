@@ -20,6 +20,13 @@ const displayBoard = (player) => {
         //Set each square's ID to i so they're numbered 1 - 100
         square.setAttribute("id", `${i}`);
         square.className = "board";
+        //Specify which board each div is a part of
+        if (parentDiv.id == 'playerDiv') {
+            square.classList.add('player');
+        } else {
+            square.classList.add('computer');
+        };
+
         square.addEventListener('click', (event) => {
             //Check for who to send an attack to
             if (parentDiv.id == "computerDiv") {
@@ -66,14 +73,13 @@ function displayHits(locations) {
     return 
 };
 
-function displayMiss(location) {
+function displayMiss(location, boardName) {
     while (location.length > 0) {
-        //Toggle on miss class
-        document.getElementById(`${location[0]}`).classList.toggle('miss');
+        //Add miss class, [location - 1] seems buggy. Not investigating rn but could cause issues down the road.
+        document.getElementsByClassName(`${boardName}`)[location - 1].classList.add('miss');
         location.shift();
     };
     return 
 };
 
-//module.exports = displayBoard;
 export { displayBoard, removeForm, displayName, displayShips, displayHits, displayMiss };

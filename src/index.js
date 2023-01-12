@@ -53,11 +53,11 @@ const gameLoop = (name) => {
 
     //After ships are placed, allow players to attack
     const attackComputer = (location) => {
-        return computerBoard.receiveAttack(location);
+        return computerBoard.receiveAttack(location, 'board computer');
     };
 
     const attackPlayer = (location) => {
-        return playerBoard.receiveAttack(location);
+        return playerBoard.receiveAttack(location, 'board player');
     };
 
     //add turn counter?
