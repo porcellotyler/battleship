@@ -22,4 +22,5 @@ const Ship = length => {
     return { isSunk };
 };
 
-module.exports = Ship;
+//module.exports = Ship;
+export { Ship };
