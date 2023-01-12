@@ -30,3 +30,7 @@
 .hit {
     background-color: grey;
 }
+
+.miss {
+    background-color: lightcoral;
+}
