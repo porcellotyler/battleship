@@ -1,7 +1,7 @@
 import { displayBoard, removeForm, displayName } from "./DOM";
 import { Player, computer } from "./player";
 import { Gameboard } from "./gameboard";
-//const displayBoard = require('./DOM');
+import { Ship } from "./ship";
 
 const startButton = document.getElementById("start");
 let nameInput = document.getElementById('name');
@@ -22,16 +22,17 @@ const gameLoop = (name) => {
 
     //Manually addShips for now
     function playerShips() {
-        playerBoard.placeShip(51, 4);
-        playerBoard.placeShip(27, 3);
-        playerBoard.placeShip(1, 3);
-        playerBoard.placeShip(88, 2);
-        playerBoard.placeShip(91, 2);
-        playerBoard.placeShip(34, 2);
-        playerBoard.placeShip(64, 1);
-        playerBoard.placeShip(49, 1);
-        playerBoard.placeShip(50, 1);
-        playerBoard.placeShip(77, 1);
+        let playerBattleship = new Ship(4, "playerBattleship");
+        playerBoard.placeShip(51, 4, "playerBattleship");
+        playerBoard.placeShip(27, 3, "playerCruiser1");
+        playerBoard.placeShip(1, 3, "playerCruiser2");
+        playerBoard.placeShip(88, 2, "playerSub1");
+        playerBoard.placeShip(91, 2, "playerSub2");
+        playerBoard.placeShip(34, 2, "playerSub3");
+        playerBoard.placeShip(64, 1, "playerDestroyer1");
+        playerBoard.placeShip(49, 1, "playerDestroyer2");
+        playerBoard.placeShip(50, 1, "playerDestroyer3");
+        playerBoard.placeShip(77, 1, "playerDestroyer4");
         console.log(playerBoard.shipCoords);
     };
     function computerShips() {
@@ -48,7 +49,7 @@ const gameLoop = (name) => {
         console.log(computerBoard.shipCoords);
     };
     playerShips();
-    computerShips();
+    //computerShips();
 
     //After ships are placed, allow players to attack
     const attackComputer = (location) => {

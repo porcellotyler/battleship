@@ -45,9 +45,10 @@ function displayName() {
     return
 };
 
-function displayShips(locations) {
+function displayShips(locations, shipName) {
     while (locations.length > 0) {
         document.getElementById(`${locations[0]}`).classList.add('ship');
+        document.getElementById(`${locations[0]}`).classList.add(`${shipName}`);
         locations.shift();
     };
     return
@@ -65,5 +66,14 @@ function displayHits(locations) {
     return 
 };
 
+function displayMiss(location) {
+    while (location.length > 0) {
+        //Toggle on miss class
+        document.getElementById(`${location[0]}`).classList.toggle('miss');
+        location.shift();
+    };
+    return 
+};
+
 //module.exports = displayBoard;
-export { displayBoard, removeForm, displayName, displayShips, displayHits };
+export { displayBoard, removeForm, displayName, displayShips, displayHits, displayMiss };

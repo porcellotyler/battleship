@@ -1,5 +1,6 @@
 import { Ship } from "./ship.js";
-import { displayShips, displayHits } from "./DOM"
+import { displayShips, displayHits, displayMiss } from "./DOM"
+import { gameLoop } from "./index.js";
 
 class Gameboard {
     constructor(name) {
@@ -22,28 +23,75 @@ class Gameboard {
     }
 
     //Place ships at specific coordinates
-    placeShip = (startPoint, length) => {
+    placeShip = (startPoint, length, name) => {
         while (length) {
             this.shipCoords.push(startPoint);//shipCoords not a master list
             startPoint++;
             length--;
         };
-        
-        return displayShips(this.shipCoords);
+        //Add coords to ship as well? not needed i think 
+        //name.coords.push(this.shipCoords);
+        return displayShips(this.shipCoords, name);
     };
 
     receiveAttack = (location) => {
+        let target = document.getElementById(`${location}`);
+
         //Determines if a ship is hit
-        if (document.getElementById(`${location}`).classList.contains('ship')) {
+        if (target.classList.contains('ship')) {
             //If a ship was hit, send hit to ship and record location
             this.hitCoords.push(location);
             displayHits(this.hitCoords);
-            return Ship().hit(1); //need to make instances of ships
+
+            //Check which ship it is
+            if (target.classList.contains("playerBattleship")) {
+                return playerBattleship.hit(1);
+            } else if (target.classList.contains("playerCruiser1")) {
+                return playerCruiser1.hit(1);
+            } else if (target.classList.contains("playerCruiser2")) {
+                return playerCruiser2.hit(1);
+            } else if (target.classList.contains("playerSub1")) {
+                return playerSub1.hit(1);
+            } else if (target.classList.contains("playerSub2")) {
+                return playerSub2.hit(1);
+            } else if (target.classList.contains("playerSub3")) {
+                return playerSub3.hit(1);
+            } else if (target.classList.contains("playerDestroyer1")) {
+                return playerDestroyer1.hit(1);
+            } else if (target.classList.contains("playerDestroyer2")) {
+                return playerDestroyer2.hit(1);
+            } else if (target.classList.contains("playerDestroyer3")) {
+                return playerDestroyer3.hit(1);
+            } else if (target.classList.contains("playerDestroyer4")) {
+                return playerDestroyer4.hit(1);
+            } else if (target.classList.contains("computerBattleship")) {
+                return computerBattleship.hit(1);
+            } else if (target.classList.contains("computerCruiser1")) {
+                return computerCruiser1.hit(1);
+            } else if (target.classList.contains("computerCruiser2")) {
+                return computerCruiser2.hit(1);
+            } else if (target.classList.contains("computerSub1")) {
+                return computerSub1.hit(1);
+            } else if (target.classList.contains("computerSub2")) {
+                return computerSub2.hit(1);
+            } else if (target.classList.contains("computerSub3")) {
+                return computerSub3.hit(1);
+            } else if (target.classList.contains("computerDestroyer1")) {
+                return computerDestroyer1.hit(1);
+            } else if (target.classList.contains("computerDestroyer2")) {
+                return computerDestroyer2.hit(1);
+            } else if (target.classList.contains("computerDestroyer3")) {
+                return computerDestroyer3.hit(1);
+            } else if (target.classList.contains("computerDestroyer4")) {
+                return computerDestroyer4.hit(1);
+            } else {
+                return console.log('hmm')
+            };
         } else {
             //If ship is not hit, add to missedShots
             this.missedShots.push(location);
-        }
-
+            displayMiss(this.missedShots);
+        };
         //After attack received, check for game over
         return this.findShips();
     };
