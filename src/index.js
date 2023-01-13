@@ -19,10 +19,13 @@ const gameLoop = (name) => {
     //const computerBoard = new Gameboard("Computer");
     const playerBoard = new Player(name);
     const computerBoard = new computer('computer');
+
+    
     let turnCounter = 1;
 
     //while game not over
-        //first place ships then
+        //first place ships
+        //comp places randomly, places picks
         /*if (turnCounter % 2 != 0) {
             //player turn 
             computerBoard.receiveAttack(location, 'board computer');
@@ -32,21 +35,7 @@ const gameLoop = (name) => {
         }*/
 
     //Manually addShips for now
-    /*function playerShips() {
-        let playerBattleship = new Ship(4, "playerBattleship");
-        playerBoard.placeShip(51, 4, "playerBattleship");
-        playerBoard.placeShip(27, 3, "playerCruiser1");
-        playerBoard.placeShip(1, 3, "playerCruiser2");
-        playerBoard.placeShip(88, 2, "playerSub1");
-        playerBoard.placeShip(91, 2, "playerSub2");
-        playerBoard.placeShip(34, 2, "playerSub3");
-        playerBoard.placeShip(64, 1, "playerDestroyer1");
-        playerBoard.placeShip(49, 1, "playerDestroyer2");
-        playerBoard.placeShip(50, 1, "playerDestroyer3");
-        playerBoard.placeShip(77, 1, "playerDestroyer4");
-        console.log(playerBoard.shipCoords);
-    };*/
-    function computerShips() {
+    /*function computerShips() {
         computerBoard.placeShip(51, 4);
         computerBoard.placeShip(27, 3);
         computerBoard.placeShip(1, 3);
@@ -58,8 +47,8 @@ const gameLoop = (name) => {
         computerBoard.placeShip(50, 1);
         computerBoard.placeShip(77, 1);
         console.log(computerBoard.shipCoords);
-    };
-     function playerShips() {
+    };*/
+    /*function playerShips() {
         let playerBattleship = new Ship(4, "playerBattleship");
         playerBoard.board.placeShip(51, 4, "playerBattleship");
         playerBoard.board.placeShip(27, 3, "playerCruiser1");
@@ -72,8 +61,8 @@ const gameLoop = (name) => {
         playerBoard.board.placeShip(50, 1, "playerDestroyer3");
         playerBoard.board.placeShip(77, 1, "playerDestroyer4");
         //console.log(playerBoard.shipCoords);
-    };
-    playerShips();
+    }; */
+    //playerShips();
     //computerShips();
 
     //After ships are placed, allow players to attack

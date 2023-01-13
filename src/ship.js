@@ -27,30 +27,37 @@ class Ship {
         };
     };
 };
-/*
-const Ship = length => {
-    //Length of the ship
-    const lengthOfShip = () => length;
-    
-    //Ships initialize with 0 hits
-    let hitNumber = 0;
 
-    //Function to increase the hitNumber for a ship
-    const hit = (hit) => {
-        if (hit == true) return hitNumber++;
-
-        return hitNumber;
+class Battleship extends Ship {
+    constructor(whose) {
+        super(4, 'Battleship');
+        this.owner = whose;
     };
-
-    //Check if the ship has been sunk by comparing hitNumber to length
-    const isSunk = (hitNumber, length) => {
-        if (hitNumber < length) return false;
-
-        return true
-    };
-
-    return { isSunk };
 };
-*/
-//module.exports = Ship;
-export { Ship };
+
+class Cruiser extends Ship {
+    constructor(whose, shipID) {
+        super(3, 'Cruiser');
+        this.owner = whose;
+        this.shipID = shipID;
+    };
+};
+
+class Sub extends Ship {
+    constructor(whose, shipID) {
+        super(2, 'Sub');
+        this.owner = whose;
+        this.shipID = shipID;
+    };
+};
+
+class Destroyer extends Ship {
+    constructor(whose, shipID) {
+        super(1, 'Destroyer');
+        this.owner = whose;
+        this.shipID = shipID;
+    };
+};
+
+
+export { Ship, Battleship, Cruiser, Sub, Destroyer };
