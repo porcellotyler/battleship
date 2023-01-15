@@ -1,12 +1,12 @@
 import { displayBoard, removeForm, displayName } from "./DOM";
 import { Player, computer } from "./player";
-import { Gameboard } from "./gameboard";
-import { Ship } from "./ship";
 
 const startButton = document.getElementById("start");
 let nameInput = document.getElementById('name');
+let playerBoard;
+let computerBoard;
 
-startButton.addEventListener("click", (event) => {
+startButton.addEventListener("click", () => {
     displayName();
     displayBoard('player');
     displayBoard('computer');
@@ -15,41 +15,26 @@ startButton.addEventListener("click", (event) => {
 });
 
 const gameLoop = (name) => {
-    //const playerBoard = new Gameboard(name); //maybe define in gameboard?
-    //const computerBoard = new Gameboard("Computer");
-    const playerBoard = new Player(name);
-    const computerBoard = new computer('computer');
-
-    
-    let turnCounter = 1;
-
-    //while game not over
-        //first place ships
-        //comp places randomly, places picks
-        /*if (turnCounter % 2 != 0) {
-            //player turn 
-            computerBoard.receiveAttack(location, 'board computer');
-        } else {
-            //computer turn
-            return playerBoard.receiveAttack(location, 'board player');
-        }*/
+    playerBoard = new Player(name);
+    computerBoard = new computer('computer');
 
     //Manually addShips for now
-    /*function computerShips() {
-        computerBoard.placeShip(51, 4);
-        computerBoard.placeShip(27, 3);
-        computerBoard.placeShip(1, 3);
-        computerBoard.placeShip(88, 2);
-        computerBoard.placeShip(91, 2);
-        computerBoard.placeShip(34, 2);
-        computerBoard.placeShip(64, 1);
-        computerBoard.placeShip(49, 1);
-        computerBoard.placeShip(50, 1);
-        computerBoard.placeShip(77, 1);
-        console.log(computerBoard.shipCoords);
-    };*/
-    /*function playerShips() {
-        let playerBattleship = new Ship(4, "playerBattleship");
+    function computerShips() {
+        computerBoard.board.placeShip(51, 4, "computerBattleship");
+        computerBoard.board.placeShip(27, 3, "computerCruiser1");
+        computerBoard.board.placeShip(1, 3, "computerCruiser2");
+        computerBoard.board.placeShip(88, 2, "computerSub1");
+        computerBoard.board.placeShip(91, 2, "computerSub2");
+        computerBoard.board.placeShip(34, 2, "computerSub3");
+        computerBoard.board.placeShip(64, 1, "computerDestroyer1");
+        computerBoard.board.placeShip(49, 1, "computerDestroyer2");
+        computerBoard.board.placeShip(50, 1, "computerDestroyer3");
+        computerBoard.board.placeShip(77, 1, "computerDestroyer4");
+    };
+
+    computerShips();
+
+    function playerShips() {
         playerBoard.board.placeShip(51, 4, "playerBattleship");
         playerBoard.board.placeShip(27, 3, "playerCruiser1");
         playerBoard.board.placeShip(1, 3, "playerCruiser2");
@@ -60,13 +45,45 @@ const gameLoop = (name) => {
         playerBoard.board.placeShip(49, 1, "playerDestroyer2");
         playerBoard.board.placeShip(50, 1, "playerDestroyer3");
         playerBoard.board.placeShip(77, 1, "playerDestroyer4");
-        //console.log(playerBoard.shipCoords);
-    }; */
-    //playerShips();
-    //computerShips();
+    };
+
+    playerShips();
+    
+    let turnCounter = 2;
+
+    /* waiting until step 5 in top instructions
+    if (turnCounter === 0) {
+       //place ships then increase turnCounter 
+    }*/
+
+    //while game not over
+        //first place ships
+        //comp places randomly, places picks
+        if (turnCounter % 2 === 0) {
+            //Check for grids loaded
+            if (document.getElementsByClassName(' board computer') != null) {
+                for (let i = 1; i < 100; i++) {
+                    let square = document.getElementsByClassName('board computer')[i];
+
+                    square.addEventListener('click', () => {
+                        computerBoard.board.receiveAttack(i);
+                    });
+                };
+            } else {
+                console.log('error in attack flow')
+            };            
+        } else {
+            //computer turn
+            //on computer turn, removeEventListeners
+            //return playerBoard.board.receiveAttack(location, 'board player');
+            //let randomAttack = computerBoard.randomMove();
+            //console.log(randomAttack);
+
+            //return playerBoard.board.receiveAttack(randomAttack)
+        }
 
     //After ships are placed, allow players to attack
-    const attackComputer = (location) => {
+    /*const attackComputer = (location) => {
         //return computerBoard.receiveAttack(location, 'board computer');
         return computerBoard.board.receiveAttack(location, 'board computer');
     };
@@ -74,10 +91,10 @@ const gameLoop = (name) => {
     const attackPlayer = (location) => {
         //return playerBoard.receiveAttack(location, 'board player');
         return playerBoard.board.receiveAttack(location, 'board player');
-    };
+    };*/
 
     //add turn counter?
-    return { attackComputer, attackPlayer };
+    return //{ attackComputer, attackPlayer };
 }
 
-export { gameLoop };
+export { gameLoop, playerBoard, computerBoard };

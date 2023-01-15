@@ -4,7 +4,8 @@ import { Battleship, Cruiser, Destroyer, Sub } from "./ship.js";
 class Player {
     constructor(name) {
         this.name = name;
-        this.board = new Gameboard(name);
+        //this.board = new Gameboard(name);
+        this.board = new Gameboard('player');
         this.battleship = new Battleship('player');
         this.Cruiser1 = new Cruiser('player', 1);
         this.Cruiser2 = new Cruiser('player', 2);
@@ -27,7 +28,8 @@ class Player {
 class computer extends Player {
     constructor(name) {
         //Create name and board using name input
-        super(name, name);
+        super(name);
+        this.board = new Gameboard(name);
         this.battleship = new Battleship('computer');
         this.Cruiser1 = new Cruiser('computer', 1);
         this.Cruiser2 = new Cruiser('computer', 2);

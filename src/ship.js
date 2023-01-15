@@ -14,15 +14,17 @@ class Ship {
     //Increase the hitNumber for a ship
     hit = (hit) => {
         if (hit == true) return this.hitNumber++;
-
-        return this.hitNumber;
+        console.log(this.hitNumber);
+        return
     };
 
     //Check if the ship has been sunk by comparing hitNumber to length
     isSunk = () => {
         if (this.hitNumber < this.length) {
+            console.log('not sunk');
             return false;
         } else {
+            console.log('sunk');
             return true;
         };
     };

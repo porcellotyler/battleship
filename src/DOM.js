@@ -1,6 +1,3 @@
-//import { Gameboard } from "./gameboard";
-import { gameLoop } from "./index";
-//const container = document.getElementById('container');
 const playerDiv = document.getElementById('playerDiv');
 const computerDiv = document.getElementById('computerDiv');
 let form = document.getElementById("form");
@@ -27,16 +24,9 @@ const displayBoard = (player) => {
             square.classList.add('computer');
         };
 
-        square.addEventListener('click', (event) => {
-            //Check for who to send an attack to
-            if (parentDiv.id == "computerDiv") {
-                return  gameLoop().attackComputer(i);
-            } else {
-                return gameLoop().attackPlayer(i);
-            };
-        });
         boardContainer.appendChild(square);
     };
+
     parentDiv.appendChild(boardContainer);
 
     return;
@@ -52,21 +42,30 @@ function displayName() {
     return
 };
 
-function displayShips(locations, shipName) {
+function displayShips(boardName, locations, shipName) {
     while (locations.length > 0) {
-        document.getElementById(`${locations[0]}`).classList.add('ship');
-        document.getElementById(`${locations[0]}`).classList.add(`${shipName}`);
+        //Find target div
+        let target = document.getElementsByClassName(`${boardName}`)[locations[0]];
+
+        //Add ship and shipName classes
+        target.classList.add('ship');
+        target.classList.add(`${shipName}`);
+        
         locations.shift();
     };
     return
 };
 
-function displayHits(locations) {
+function displayHits(boardName, locations) {
     while (locations.length > 0) {
-        //Toggle off ship class
-        document.getElementById(`${locations[0]}`).classList.toggle('ship');
+        //Find target div
+        let target = document.getElementsByClassName(`${boardName}`)[locations[0]];
+
+        //Remove ship class
+        target.classList.remove('ship');
+
         //Add hit class 
-        document.getElementById(`${locations[0]}`).classList.add('hit');
+        target.classList.add('hit');
 
         locations.shift();
     };
