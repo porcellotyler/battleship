@@ -46,17 +46,21 @@ class computer extends Player {
 
     randomMove = () => {
         //Generate number between 0 - 100 
-        let move = Math.floor(Math.random() * 101);
+        //let move = Math.floor(Math.random() * 101);
+        let move = Math.floor(Math.random() * 100) + 1;
+
 
         //Checking that the random move is not contained in the oldMoves array
-        if (this.oldMoves.filter(loc => loc === move).length > 0) {
+        /*if (this.oldMoves.filter(loc => loc === move).length > 0) {
             //Call itself to make another move if the random move is illegal
             return this.randomMove();
-        }
+        }*/
 
         //Assuming move is legal, add it to the oldMoves array, call Player().attack(move);
         this.oldMoves.push(move);
-        return super.attack(move);
+        //console.log(this.oldMoves);
+        console.log(move);
+        return move //super.attack(move);
     };
 };
 

@@ -50,7 +50,7 @@ function displayShips(boardName, locations, shipName) {
         //Add ship and shipName classes
         target.classList.add('ship');
         target.classList.add(`${shipName}`);
-        
+
         locations.shift();
     };
     return
@@ -81,4 +81,28 @@ function displayMiss(location, boardName) {
     return 
 };
 
-export { displayBoard, removeForm, displayName, displayShips, displayHits, displayMiss };
+function checkForShips(boardName) {
+    let board = document.getElementsByClassName(`board ${boardName}`);
+    //console.log(boardName);
+    //console.log(board);
+
+    for (let i = 0; i < 100; i++) {
+        let checkDiv = board[i];
+        //console.log(checkDiv);
+
+        if (checkDiv.classList.contains('ship')) {
+            return //console.log('ship found');
+        };
+    };
+    return gameOver();
+};
+
+function gameOver() {
+    const container = document.getElementById('result');
+    let display = document.createElement('div');
+    display.innerText = 'Game over!';
+
+    return container.appendChild(display);
+}
+
+export { displayBoard, removeForm, displayName, displayShips, displayHits, displayMiss, checkForShips };

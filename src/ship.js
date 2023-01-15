@@ -13,7 +13,7 @@ class Ship {
 
     //Increase the hitNumber for a ship
     hit = (hit) => {
-        if (hit == true) return this.hitNumber++;
+        if (hit == 1) return this.hitNumber++;
         console.log(this.hitNumber);
         return
     };

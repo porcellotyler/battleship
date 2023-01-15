@@ -1,4 +1,4 @@
-import { displayShips, displayHits, displayMiss } from "./DOM"
+import { displayShips, displayHits, displayMiss, checkForShips } from "./DOM"
 import { playerBoard, computerBoard } from "./index.js";
 
 class Gameboard {
@@ -46,64 +46,44 @@ class Gameboard {
 
             //Check which ship it is
             if (target.classList.contains("playerBattleship")) {
-                //return playerBattleship.hit(1);
                 return playerBoard.battleship.hit(1);
             } else if (target.classList.contains("playerCruiser1")) {
-                //return playerCruiser1.hit(1);
                 return playerBoard.Cruiser1.hit(1);
             } else if (target.classList.contains("playerCruiser2")) {
-                //return playerCruiser2.hit(1);
                 return playerBoard.Cruiser2.hit(1);
             } else if (target.classList.contains("playerSub1")) {
-                //return playerSub1.hit(1);
                 return playerBoard.Sub1.hit(1);
             } else if (target.classList.contains("playerSub2")) {
-                //return playerSub2.hit(1);
                 return playerBoard.Sub2.hit(1);
             } else if (target.classList.contains("playerSub3")) {
-                //return playerSub3.hit(1);
                 return playerBoard.Sub3.hit(1);
             } else if (target.classList.contains("playerDestroyer1")) {
-                //return playerDestroyer1.hit(1);
                 return playerBoard.Destroyer1.hit(1);
             } else if (target.classList.contains("playerDestroyer2")) {
-                //return playerDestroyer2.hit(1);
                 return playerBoard.Destroyer2.hit(1);
             } else if (target.classList.contains("playerDestroyer3")) {
-                //return playerDestroyer3.hit(1);
                 return playerBoard.Destroyer3.hit(1);
             } else if (target.classList.contains("playerDestroyer4")) {
-                //return playerDestroyer4.hit(1);
                 return playerBoard.Destroyer4.hit(1);
             } else if (target.classList.contains("computerBattleship")) {
-                //return computerBattleship.hit(1);
                 return computerBoard.battleship.hit(1);
             } else if (target.classList.contains("computerCruiser1")) {
-                //return computerCruiser1.hit(1);
                 return computerBoard.Cruiser1.hit(1);
             } else if (target.classList.contains("computerCruiser2")) {
-                //return computerCruiser2.hit(1);
                 return computerBoard.Cruiser2.hit(1);
             } else if (target.classList.contains("computerSub1")) {
-                //return computerSub1.hit(1);
                 return computerBoard.Sub1.hit(1);
             } else if (target.classList.contains("computerSub2")) {
-                //return computerSub2.hit(1);
                 return computerBoard.Sub2.hit(1);
             } else if (target.classList.contains("computerSub3")) {
-                //return computerSub3.hit(1);
                 return computerBoard.Sub3.hit(1);
             } else if (target.classList.contains("computerDestroyer1")) {
-                //return computerDestroyer1.hit(1);
                 return computerBoard.Destroyer1.hit(1);
             } else if (target.classList.contains("computerDestroyer2")) {
-                //return computerDestroyer2.hit(1);
                 return computerBoard.Destroyer2.hit(1);
             } else if (target.classList.contains("computerDestroyer3")) {
-                //return computerDestroyer3.hit(1);
                 return computerBoard.Destroyer3.hit(1);
             } else if (target.classList.contains("computerDestroyer4")) {
-                //return computerDestroyer4.hit(1);
                 return computerBoard.Destroyer4.hit(1);
             } else {
                 return console.log('hmm')
@@ -119,7 +99,7 @@ class Gameboard {
 
     //Finds non-sunk ships on board, if none, reports game over
     findShips = () => {
-        if (this.shipCoords.length == this.hitCoords.length) return "Game over!"
+        checkForShips(this.name);
     }; //need to fix
 };
 

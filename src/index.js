@@ -50,51 +50,108 @@ const gameLoop = (name) => {
     playerShips();
     
     let turnCounter = 2;
+    function runTurns(count) {
+        let localCount = count;
+        /* waiting until step 5 in top instructions
+        if (turnCounter === 0) {
+           //place ships then increase turnCounter 
+        }*/
+        //while game not over
+        const checkTurn = (count) => {
+            if (count % 2 === 0) {
+                playerTurn();
+            } else {
+                computerTurn();
+            };
+        };
+    
+        const playerTurn = () => {
+            localCount++;
+            //Check for boards loaded
+            if (document.getElementsByClassName('board computer') != null) {
+                for (let i = 1; i < 100; i++) {
+                    let square = document.getElementsByClassName('board computer')[i];
 
-    /* waiting until step 5 in top instructions
-    if (turnCounter === 0) {
-       //place ships then increase turnCounter 
-    }*/
+                    //Make computer board able to be attacked on click
+                    square.onclick = function allowAttack() {
+                        //Send attack
+                        computerBoard.board.receiveAttack(i);
+                        //Check for game over
+                        computerBoard.board.findShips();
+                        return checkTurn(localCount);
+                    };
+                }; 
+            } else {
+                return console.log('error in player attack flow')
+            };
+        }
+    
+        const computerTurn = () => {
+            localCount++;
+            //Check for board loaded
+            /*if (document.getElementsByClassName('board computer') != null) {
+                for (let i = 1; i < 100; i++) {
+                    let square = document.getElementsByClassName('board computer')[i];
+                    //RemoveEventListeners for player
+                    square.removeEventListener('click', allowAttack); //allowAttack not defined, going to focus on getting turn flow to work and then come back to fix this
+                };
+                return
+            };*/
+            let randomAttack = computerBoard.randomMove();
 
-    //while game not over
-        //first place ships
-        //comp places randomly, places picks
-        if (turnCounter % 2 === 0) {
-            //Check for grids loaded
+            //Send attack
+            playerBoard.board.receiveAttack(randomAttack);
+            //Check for game over
+            playerBoard.board.findShips();
+            return checkTurn(localCount);
+        }
+
+        if (localCount === 2) checkTurn(localCount);
+    };
+    runTurns(turnCounter);
+    //first place ships
+    //comp places randomly, places picks
+    /*if (turnCounter % 2 === 0) {
+        //player's turn
+        turnCounter++;
+            //Check for boards loaded
             if (document.getElementsByClassName(' board computer') != null) {
                 for (let i = 1; i < 100; i++) {
                     let square = document.getElementsByClassName('board computer')[i];
 
-                    square.addEventListener('click', () => {
+                    /*square.addEventListener('click', () => {
                         computerBoard.board.receiveAttack(i);
+                        return turnCounter++;
                     });
+                    const allowAttack = () => {
+                        //turnCounter++;
+                        console.log(turnCounter);
+                        return computerBoard.board.receiveAttack(i);
+                    }
+                    square.addEventListener('click', allowAttack);
                 };
+                return 
             } else {
-                console.log('error in attack flow')
-            };            
-        } else {
+                return console.log('error in attack flow')
+            };
+    } else if (turnCounter % 2 != 0) {
+        console.log('made it to comp turn');
             //computer turn
             //on computer turn, removeEventListeners
-            //return playerBoard.board.receiveAttack(location, 'board player');
-            //let randomAttack = computerBoard.randomMove();
-            //console.log(randomAttack);
+            if (document.getElementsByClassName(' board computer') != null) {
+                for (let i = 1; i < 100; i++) {
+                    let square = document.getElementsByClassName('board computer')[i];
 
-            //return playerBoard.board.receiveAttack(randomAttack)
-        }
+                    square.removeEventListener('click', allowAttack);
+                };
+                return
+            }
+            let randomAttack = computerBoard.randomMove();
+            console.log(randomAttack);
 
-    //After ships are placed, allow players to attack
-    /*const attackComputer = (location) => {
-        //return computerBoard.receiveAttack(location, 'board computer');
-        return computerBoard.board.receiveAttack(location, 'board computer');
-    };
-
-    const attackPlayer = (location) => {
-        //return playerBoard.receiveAttack(location, 'board player');
-        return playerBoard.board.receiveAttack(location, 'board player');
-    };*/
-
-    //add turn counter?
-    return //{ attackComputer, attackPlayer };
+            return playerBoard.board.receiveAttack(randomAttack)   
+    }*/
+    return
 }
 
 export { gameLoop, playerBoard, computerBoard };
