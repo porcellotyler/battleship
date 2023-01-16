@@ -9,11 +9,6 @@
 </head>
 <body>
     <h1 id="header">Battleship</h1>
-    <!--
-    <div id="userContainer">
-        <div id="playerDiv"></div>
-        <div id="computerDiv"></div>
-    </div> -->
 
     <form id="form">
         <label for="name">Name</label>
@@ -24,6 +19,80 @@
     <div id="container">
         <div id="playerDiv"></div>
         <div id="computerDiv"></div>
+    </div>
+
+    <div id="yard" class="hide">
+        <ul>Place your ships:</ul>
+        <ul id="battleshipList">Battleship, 4 units long   
+            <form id="battleshipForm"> 
+                <label for="battleshipCoords">Coordinates:</label> 
+                <input type="text" id="battleshipCoords" name="number" placeholder="1-100" required maxlength="3"> 
+                <button id="placeBattleship" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="cruiser1List">Cruiser 1, 3 units long
+            <form id="cruiser1Form">
+                <label for="cruiser1Coords">Coordinates:</label>
+                <input type="text" id="cruiser1Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeCruiser1" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="cruiser2List">Cruiser 2, 3 units long         
+            <form id="cruiser2Form">
+                <label for="cruiser2Coords">Coordinates:</label>
+                <input type="text" id="cruiser2Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeCruiser2" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="sub1List">Submarine 1, 2 units long 
+            <form id="sub1Form">
+                <label for="sub1Coords">Coordinates:</label>
+                <input type="text" id="sub1Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeSub1" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="sub2List">Submarine 2, 2 units long 
+            <form id="sub2Form">
+                <label for="sub2Coords">Coordinates:</label>
+                <input type="text" id="sub2Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeSub2" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="sub3List">Submarine 3, 2 units long 
+            <form id="sub3Form">
+                <label for="sub3Coords">Coordinates:</label>
+                <input type="text" id="sub3Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeSub3" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="destroyer1List">Destroyer 1, 1 unit long 
+            <form id="destroyer1Form">
+                <label for="destroyer1Coords">Coordinates:</label>
+                <input type="text" id="destroyer1Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeDestroyer1" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="destroyer2List">Destroyer 2, 1 unit long 
+            <form id="destroyer2Form">
+                <label for="destroyer2Coords">Coordinates:</label>
+                <input type="text" id="destroyer2Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeDestroyer2" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="destroyer3List">Destroyer 3, 1 unit long 
+            <form id="destroyer3Form">
+                <label for="destroyer3Coords">Coordinates:</label>
+                <input type="text" id="destroyer3Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeDestroyer3" type="button">Place</button>
+            </form>
+        </ul>
+        <ul id="destroyer4List">Destroyer 4, 1 unit long
+            <form id="destroyer4Form">
+                <label for="destroyer4Coords">Coordinates:</label>
+                <input type="text" id="destroyer4Coords" name="number" placeholder="1-100" required maxlength="3">
+                <button id="placeDestroyer4" type="button">Place</button>
+            </form>
+        </ul>
     </div>
 
     <div id="result"></div>

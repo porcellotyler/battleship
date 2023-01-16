@@ -1,7 +1,6 @@
 #container {
     display: flex;
     justify-content: space-around;
-    border: 2px solid black;
 }
 
 /*#playerDiv, #computerDiv {
@@ -23,7 +22,7 @@
     cursor: pointer;
 }
 
-.ship {
+.ship.player {
     background-color: olivedrab;
 }
 
@@ -33,4 +32,19 @@
 
 .miss {
     background-color: lightcoral;
+}
+
+#yard {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    margin-top: 10px;
+}
+
+.hide, .hide > ul {
+   display: none; 
+}
+
+.shipParent {
+    display: flex;
 }

@@ -81,17 +81,20 @@ function displayMiss(location, boardName) {
     return 
 };
 
+function shipYard() {
+    const yard = document.getElementById('yard');
+    yard.classList.toggle('hide');
+}
+
 function checkForShips(boardName) {
     let board = document.getElementsByClassName(`board ${boardName}`);
-    //console.log(boardName);
-    //console.log(board);
 
     for (let i = 0; i < 100; i++) {
         let checkDiv = board[i];
-        //console.log(checkDiv);
 
         if (checkDiv.classList.contains('ship')) {
-            return //console.log('ship found');
+            //Game not over if a ship is found
+            return
         };
     };
     return gameOver();
@@ -105,4 +108,4 @@ function gameOver() {
     return container.appendChild(display);
 }
 
-export { displayBoard, removeForm, displayName, displayShips, displayHits, displayMiss, checkForShips };
+export { displayBoard, removeForm, displayName, displayShips, displayHits, displayMiss, shipYard, checkForShips };
