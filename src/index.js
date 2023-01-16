@@ -133,11 +133,9 @@ const gameLoop = (name) => {
 
         return
     };
-
-    //playerShips();
     
     let turnCounter = 2;
-    
+
     async function runTurns(count) {
         await playerShips();
         let localCount = count;
@@ -160,7 +158,7 @@ const gameLoop = (name) => {
                     //Make computer board able to be attacked on click
                     square.onclick = function allowAttack() {
                         //Send attack
-                        computerBoard.board.receiveAttack(i);
+                        computerBoard.board.receiveAttack(i + 1);
                         //Check for game over
                         computerBoard.board.findShips();
                         return checkTurn(localCount);

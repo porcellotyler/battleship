@@ -16,6 +16,7 @@ const displayBoard = (player) => {
         let square = document.createElement('div');
         //Set each square's ID to i so they're numbered 1 - 100
         square.setAttribute("id", `${i}`);
+        square.innerText = i;
         square.className = "board";
         //Specify which board each div is a part of
         if (parentDiv.id == 'playerDiv') {
