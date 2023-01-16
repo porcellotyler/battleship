@@ -1,25 +1,41 @@
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgba(239, 246, 255);
+}
+
+body {
+    background-image: url("background.svg");
+    background-size: cover;
+}
+
+#header {
+    text-align: center;
+    font-style: italic;
+}
+
 #container {
     display: flex;
     justify-content: space-around;
 }
 
-/*#playerDiv, #computerDiv {
-    display: grid;
-    grid-template-columns: repeat(10, 25px);
-    grid-template-rows: repeat(10, 25px);
-} */
-
 .boardContainer {
+    margin-top: 1vh;
     display: grid;
-    grid-template-columns: repeat(10, 25px);
-    grid-template-rows: repeat(10, 25px);
+    grid-template-columns: repeat(10, 4vw);
+    grid-template-rows: repeat(10, 4vw);
 }
 
 .board {
-    border: 2px solid lightcoral;
-    height: 25px;
-    width: 25px;
+    border: 2px solid #1e3a8a;
+    height: 4vw;
+    width: 4vw;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    font-size: 12px;
+    color: rgba(239, 246, 255, 0.5);
 }
 
 .ship.player {
@@ -31,14 +47,29 @@
 }
 
 .miss {
-    background-color: lightcoral;
+    background-color: #1e3a8a;
 }
 
 #yard {
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
     margin-top: 10px;
+}
+
+button {
+    color: #1e3a8a;
+    border-radius: 5px;
+    background-color: #dbeafe;
+    border: none;
+    height: 25px;
+    width: 60px;
+}
+
+input {
+    color: #1e3a8a;
+    border-radius: 5px;
+    border: none;
+    width: 60px;
 }
 
 .hide, .hide > ul, .clicked {
