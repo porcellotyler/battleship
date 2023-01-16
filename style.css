@@ -41,7 +41,7 @@
     margin-top: 10px;
 }
 
-.hide, .hide > ul {
+.hide, .hide > ul, .clicked {
    display: none; 
 }
 
