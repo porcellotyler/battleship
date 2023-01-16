@@ -19,23 +19,28 @@ const gameLoop = (name) => {
     playerBoard = new Player(name);
     computerBoard = new computer('computer');
 
-    //Manually addShips for now
     function computerShips() {
-        computerBoard.board.placeShip(4, 4, "computerBattleship");
-        computerBoard.board.placeShip(43, 3, "computerCruiser1");
-        computerBoard.board.placeShip(82, 3, "computerCruiser2");
-        computerBoard.board.placeShip(17, 2, "computerSub1");
-        computerBoard.board.placeShip(64, 2, "computerSub2");
-        computerBoard.board.placeShip(94, 2, "computerSub3");
-        computerBoard.board.placeShip(34, 1, "computerDestroyer1");
-        computerBoard.board.placeShip(49, 1, "computerDestroyer2");
-        computerBoard.board.placeShip(77, 1, "computerDestroyer3");
-        computerBoard.board.placeShip(22, 1, "computerDestroyer4");
+        //Generate random placement for computer's ships
+        //Need to consider checking to avoid duplicate placements
+        function randIntFromInterval(min, max) {
+            return Math.floor(Math.random() * (max - min + 1) + min)
+        };
+        
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 4, "computerBattleship");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 3, "computerCruiser1");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 3, "computerCruiser2");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 2, "computerSub1");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 2, "computerSub2");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 2, "computerSub3");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 1, "computerDestroyer1");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 1, "computerDestroyer2");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 1, "computerDestroyer3");
+        computerBoard.board.placeShip(randIntFromInterval(0, 100), 1, "computerDestroyer4");
     };
 
     computerShips();
 
-    function playerShips() {
+    async function playerShips() {
         const placeBattleship = document.getElementById('placeBattleship');
         placeBattleship.addEventListener('click', () => {
             document.getElementById('battleshipList').classList.add('clicked');
@@ -125,18 +130,18 @@ const gameLoop = (name) => {
 
             playerBoard.board.placeShip(coords, 1, "playerDestroyer4");
         });
+
+        return
     };
 
-    playerShips();
+    //playerShips();
     
-    let turnCounter;
-    function runTurns(count) {
+    let turnCounter = 2;
+    
+    async function runTurns(count) {
+        await playerShips();
         let localCount = count;
-        /* waiting until step 5 in top instructions
-        if (turnCounter === 0) {
-           //place ships then increase turnCounter 
-        }*/
-        //while game not over
+        
         const checkTurn = (count) => {
             if (count % 2 === 0) {
                 playerTurn();
@@ -160,7 +165,7 @@ const gameLoop = (name) => {
                         computerBoard.board.findShips();
                         return checkTurn(localCount);
                     };
-                }; 
+                };
             } else {
                 return console.log('error in player attack flow')
             };
@@ -168,15 +173,6 @@ const gameLoop = (name) => {
     
         const computerTurn = () => {
             localCount++;
-            //Check for board loaded
-            /*if (document.getElementsByClassName('board computer') != null) {
-                for (let i = 1; i < 100; i++) {
-                    let square = document.getElementsByClassName('board computer')[i];
-                    //RemoveEventListeners for player
-                    square.removeEventListener('click', allowAttack); //allowAttack not defined, going to focus on getting turn flow to work and then come back to fix this
-                };
-                return
-            };*/
             let randomAttack = computerBoard.randomMove();
 
             //Send attack
@@ -188,10 +184,10 @@ const gameLoop = (name) => {
 
         if (localCount === 2) checkTurn(localCount);
     };
+
     runTurns(turnCounter);
-    //first place ships
-    //comp places randomly, places picks
+
     return
-}
+};
 
 export { gameLoop, playerBoard, computerBoard };
